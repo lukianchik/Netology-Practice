@@ -7,3 +7,4 @@
 
 Ссылка на данные и модель, которая используются в приложении: https://drive.google.com/file/d/1h1wuFIb-2lL5Py_gRjtmj9Z7aFIh5XBl/view?usp=sharing
 ### !В приложении проверьте путь к модели!
+![Alt Text](https://github.com/lukianchik/Netology-Practice/blob/main/App_work.gif)
