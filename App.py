@@ -7,6 +7,8 @@ from tkinter import filedialog, messagebox
 import tkinter.font as tkfont
 from sklearn.preprocessing import LabelEncoder
 
+canvas = None
+
 def upload_file():
     file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
     if file_path:
@@ -70,22 +72,24 @@ def process_and_plot_data(model, file_path, root):
         messagebox.showerror("Ошибка", f"Не удалось обработать данные: {e}")
 
 def display_graph(df_grouped, root, name_of_graph):
+    global canvas
     try:
-        for widget in root.winfo_children():
-            if isinstance(widget, FigureCanvasTkAgg):
-                widget.get_tk_widget().destroy()
+        if canvas is None:
+            fig, ax = plt.subplots()
+            canvas = FigureCanvasTkAgg(fig, master=root)
+            canvas.get_tk_widget().pack(fill="both", expand=True, padx=10, pady=10)
+        else:
+            ax = canvas.figure.axes[0]
 
-        fig, ax = plt.subplots()
-        ax.plot(df_grouped['Date'], df_grouped['Sales'])
-        ax.set_title(name_of_graph)
+        ax.plot(df_grouped['Date'], df_grouped['Sales'], label=name_of_graph)
         ax.set_xlabel('Дата')
+        ax.set_ylabel('Продажи, $')
 
-        canvas = FigureCanvasTkAgg(fig, master=root)
+        ax.legend()
         canvas.draw()
-        canvas.get_tk_widget().pack(fill="both", expand=True, padx=10, pady=10)
 
     except Exception as e:
-        messagebox.showerror("Ошибка", f"Не удалось обработать данные: {e}")
+        messagebox.showerror("Ошибка", f"Не удалось отобразить график: {e}")
 
 root = tk.Tk()
 root.title("Прогноз продаж")
