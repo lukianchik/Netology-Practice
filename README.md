@@ -6,7 +6,7 @@
 
 
 ## Репозиторий содержит                                                                                                        
-[Отчет](https://github.com/lukianchik/Netology-Practice/blob/main/Netology_Practice.ipynb) по проведенной работе                                
+[Отчет](https://github.com/lukianchik/Netology-Practice/blob/main/Netology_practice.ipynb) по проведенной работе                                
 [Прототип](https://github.com/lukianchik/Netology-Practice/blob/main/App.py) приложения на языке python 
 
 Ссылка на данные и модель: https://drive.google.com/file/d/1B9npgQqidxoZlxd3GrJCYGnOjkyfDHal/view?usp=sharing
