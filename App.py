@@ -44,6 +44,9 @@ def process_and_plot_data(model, file_path, root):
         df_test['year'] = df_test['Date'].dt.year
         df_test["year"] = df_test["year"].astype(int)
 
+        df_test['week'] = df_test['Date'].dt.isocalendar().week
+        df_test["week"] = df_test["week"].astype(int)
+
         df_test = df_test.drop(columns=['Date'])
 
         df_test['Discount'] = df_test['MarkDown1'] + df_test['MarkDown2'] + df_test['MarkDown3'] + df_test['MarkDown4'] + df_test['MarkDown5']
@@ -60,7 +63,7 @@ def process_and_plot_data(model, file_path, root):
         le = LabelEncoder()
         df_test['Type'] = le.fit_transform(df_test['Type'])
 
-        df_test = df_test.drop(columns=['Unemployment', 'Type', 'CPI'])
+        df_test = df_test.drop(columns=['Type', 'Unemployment', 'CPI'])
         predictions = model.predict(df_test)
 
         df_predictions = pd.DataFrame({'Date': df_date['Date'], 'Sales': predictions})
