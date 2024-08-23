@@ -11,4 +11,4 @@
 
 Ссылка на данные и модель: https://drive.google.com/file/d/1B9npgQqidxoZlxd3GrJCYGnOjkyfDHal/view?usp=sharing
 ### !В приложении проверьте путь к модели!
-
+![](https://github.com/lukianchik/Netology-Practice/blob/main/App_work.gif)
