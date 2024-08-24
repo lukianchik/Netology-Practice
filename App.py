@@ -27,6 +27,9 @@ def process_and_plot_data(model, file_path, root):
         if 'Weekly_Sales' in df_test.columns.values.tolist():
             df_test = df_test.drop(columns=['Weekly_Sales'])
             name_of_graph = 'Прошлые продажи, $'
+            predictions = df_test.Weekly_Sales
+            df_predictions = pd.DataFrame({'Date': df_test['Date'], 'Sales': predictions})
+            df_grouped = df_test.groupby('Date', as_index=False).sum()
             display_graph(df_grouped, root, name_of_graph)
         else:
             name_of_graph = 'Прогноз будущих продаж, $'
